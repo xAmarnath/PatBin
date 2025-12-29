@@ -3,9 +3,6 @@ FROM golang:1.25.3-alpine AS builder
 
 WORKDIR /build
 
-# Install build dependencies
-RUN apk add --no-cache gcc musl-dev
-
 # Copy go mod files
 COPY go.mod go.sum ./
 RUN go mod download
