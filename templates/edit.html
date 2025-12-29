@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.title}}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">Patbin</a>
+            <div class="nav-links">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
+                    <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="/" class="btn btn-primary">New Paste</a>
+            </div>
+        </div>
+    </nav>
+    <main class="page">
+        <div class="container container-narrow">
+            <div class="page-header"><h1>Edit Paste</h1></div>
+            <form id="edit-form" class="card" data-paste-id="{{.paste.ID}}">
+                <div class="form-group">
+                    <label class="form-label" for="title">Title</label>
+                    <input type="text" id="title" name="title" class="form-input" value="{{.paste.Title}}">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="content">Content</label>
+                    <textarea id="content" name="content" class="form-textarea" required>{{.paste.Content}}</textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="language">Language</label>
+                        <select id="language" name="language" class="form-select">
+                            <option value="">Auto-detect</option>
+                            <option value="go" {{if eq .paste.Language "go"}}selected{{end}}>Go</option>
+                            <option value="python" {{if eq .paste.Language "python"}}selected{{end}}>Python</option>
+                            <option value="javascript" {{if eq .paste.Language "javascript"}}selected{{end}}>JavaScript</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-checkbox"><input type="checkbox" name="is_public" {{if .paste.IsPublic}}checked{{end}}><span>Public</span></label>
+                    </div>
+                </div>
+                <div class="mt-4 flex gap-3">
+                    <button type="submit" class="btn btn-primary btn-lg" style="flex:1">Save</button>
+                    <a href="/{{.paste.ID}}" class="btn btn-secondary btn-lg">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
