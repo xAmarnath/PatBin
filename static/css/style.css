@@ -1,36 +1,36 @@
 :root {
-    --bg-primary: #fff;
-    --bg-secondary: #f8fafc;
-    --bg-tertiary: #f1f5f9;
-    --bg-code: #1e293b;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-tertiary: #94a3b8;
-    --accent: #6366f1;
-    --accent-hover: #4f46e5;
-    --accent-light: #e0e7ff;
-    --border: #e2e8f0;
-    --success: #10b981;
+    --bg-primary: #fafafa;
+    --bg-secondary: #f5f5f5;
+    --bg-tertiary: #e5e5e5;
+    --bg-code: #1c1c1c;
+    --text-primary: #171717;
+    --text-secondary: #525252;
+    --text-tertiary: #a3a3a3;
+    --accent: #f97316;
+    --accent-hover: #ea580c;
+    --accent-light: #fff7ed;
+    --border: #d4d4d4;
+    --success: #22c55e;
     --warning: #f59e0b;
     --error: #ef4444;
-    --shadow: 0 1px 3px rgb(0 0 0 / 0.08);
-    --radius: 6px;
-    --radius-lg: 10px;
-    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+    --radius: 4px;
+    --radius-lg: 8px;
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
 [data-theme="dark"] {
-    --bg-primary: #0d1117;
-    --bg-secondary: #161b22;
-    --bg-tertiary: #21262d;
-    --bg-code: #0d1117;
-    --text-primary: #c9d1d9;
-    --text-secondary: #8b949e;
-    --text-tertiary: #6e7681;
-    --accent: #58a6ff;
-    --accent-hover: #79b8ff;
-    --accent-light: #1f3a5f;
-    --border: #30363d;
+    --bg-primary: #111111;
+    --bg-secondary: #181818;
+    --bg-tertiary: #222222;
+    --bg-code: #111111;
+    --text-primary: #e5e5e5;
+    --text-secondary: #999999;
+    --text-tertiary: #555555;
+    --accent: #fb923c;
+    --accent-hover: #fdba74;
+    --accent-light: #2d1a0a;
+    --border: #2d2d2d;
 }
 
 *,
@@ -39,6 +39,30 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 5px;
+    border: 2px solid var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) var(--bg-secondary);
 }
 
 html {
@@ -322,9 +346,20 @@ a:hover {
     overflow-x: auto;
 }
 
-.code-body.wrap-text .code-content pre {
-    white-space: pre-wrap;
-    word-break: break-all;
+.code-body.wrap-text {
+    overflow-x: hidden;
+}
+
+.code-body.wrap-text .code-content {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.code-body.wrap-text .code-content pre,
+.code-body.wrap-text .code-content code {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
 }
 
 .line-numbers {
