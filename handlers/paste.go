@@ -50,7 +50,11 @@ func (h *PasteHandler) CreatePaste(c *gin.Context) {
 		return
 	}
 
-	// Generate unique ID
+	const maxContentSize = 512 * 1024 // 512 KB
+	if len(req.Content) > maxContentSize {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Content too large (max 512 KB)"})
+		return
+	}
 	var id string
 	for {
 		id = generateID()
